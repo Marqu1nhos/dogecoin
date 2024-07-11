@@ -1,0 +1,31 @@
+class Dogecoin:
+    def __init__(self, oferta_total, oferta_circulante):
+        self.oferta_total = oferta_total
+        self.oferta_circulante = oferta_circulante
+    
+    def get_oferta_circulante(self):
+        return self.oferta_circulante
+    
+    def definir_oferta_limitada(self, nova_oferta_circulante):
+        if nova_oferta_circulante <= self.oferta_total:
+            self.oferta_circulante = nova_oferta_circulante
+            print(f"Oferta circulante definida para {self.oferta_circulante} DOGE.")
+        else:
+            print("Erro: Nova oferta circulante não pode ser maior que a oferta total.")
+    
+    def aumentar_oferta_circulante(self, quantidade):
+        if self.oferta_circulante + quantidade <= self.oferta_total:
+            self.oferta_circulante += quantidade
+            print(f"Oferta circulante aumentada para {self.oferta_circulante} DOGE.")
+        else:
+            print("Erro: Aumento da oferta circulante ultrapassa a oferta total.")
+
+# Exemplo de uso:
+if __name__ == "__main__":
+    dogecoin = Dogecoin(oferta_total=100000000000, oferta_circulante=0)
+
+    # Definindo a oferta circulante inicial
+    dogecoin.definir_oferta_limitada(10000000000)  # Por exemplo, 10 bilhões de DOGE
+
+    # Aumentando a oferta circulante (simulação)
+    dogecoin.aumentar_oferta_circulante(1000000000)  # Por exemplo, adicionando mais 1 bilhão de DOGE
